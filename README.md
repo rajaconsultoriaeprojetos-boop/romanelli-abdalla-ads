@@ -1,20 +1,24 @@
 # Romanelli Abdalla — Landing Ads (Desbloqueio Bancário)
 
-Landing page de tráfego pago para **Romanelli Abdalla Advocacia**, usada no subdomínio:
+Landing de tráfego pago para **Romanelli Abdalla Advocacia**.
 
-**https://ads.romanelliabdalla.com.br**
-
-Domínio principal do site institucional: **https://romanelliabdalla.com.br**
+| | |
+|---|---|
+| Subdomínio (ads) | https://ads.romanelliabdalla.com.br |
+| Site principal | https://romanelliabdalla.com.br |
+| Produção Vercel | https://romanelli-abdalla-ads.vercel.app |
+| GitHub | https://github.com/rajaconsultoriaeprojetos-boop/romanelli-abdalla-ads |
+| Site institucional (repo) | https://github.com/rajaconsultoriaeprojetos-boop/romanelli-legal-flow |
 
 ## Páginas
 
 - `/` — triagem inicial (etapa 1)
-- `/desbloqueio-bancario.html` — página de conversão / WhatsApp (etapa 2)
+- `/desbloqueio-bancario.html` — conversão / WhatsApp (etapa 2)
 
 ## Mensuração
 
 - GTM: `GTM-TPJQCKZW`
-- Conversão Google Ads via GTM no evento `whatsapp_conversion` (sem disparo direto do snippet AW no HTML)
+- Conversão Google Ads via GTM no evento `whatsapp_conversion` (sem snippet AW direto no HTML)
 
 ## Desenvolvimento local
 
@@ -25,10 +29,33 @@ npm run dev
 
 Abre em `http://127.0.0.1:43127`.
 
-## Build / Vercel
+## Deploy
+
+Projeto Vercel: `romanelli-abdalla-ads` (time RAJA), conectado a este repositório GitHub.
 
 ```bash
 npm run build
+npx vercel --prod
 ```
 
-Deploy na Vercel com o domínio customizado `ads.romanelliabdalla.com.br` apontando para este projeto.
+## DNS do subdomínio `ads`
+
+No provedor do domínio `romanelliabdalla.com.br` (Registro.br), aponte o subdomínio **ads** para a Vercel:
+
+**Opção recomendada (CNAME):**
+
+| Tipo | Nome | Valor |
+|------|------|--------|
+| CNAME | `ads` | `fd4e440b93dfc390.vercel-dns-017.com` |
+
+**Alternativa (A):**
+
+| Tipo | Nome | Valor |
+|------|------|--------|
+| A | `ads` | `76.76.21.21` |
+
+Hoje o `ads` ainda aponta para `base44.onrender.com`. Depois de alterar o DNS, confira com:
+
+```bash
+npx vercel domains verify ads.romanelliabdalla.com.br
+```
